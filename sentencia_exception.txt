@@ -1,4 +1,4 @@
-ESTRUCTURA SENTENCIA BUCLE LOOP + EXCEPTION
+ESTRUCTURA SENTENCIA BUCLE LOOP + EXCEPTION:
 
 DECLARE
     contador NUMBER := 1;
@@ -18,3 +18,38 @@ BEGIN
         END;
     END LOOP;
 END;
+
+
+INSERCIÓN DE DATOS TIPO OBJETO:
+
+-Decalración e inserción:
+
+    DECLARE
+        TYPE new_persona IS RECORD(
+        codigo INTEGER,
+        nombre VARCHAR2(20),
+        edad NUMBER
+        );
+        Lucas new_persona;
+
+        BEGIN
+        Lucas.codigo := 006;
+        Lucas.nombre := 'Lucas';
+        Lucas.edad := 22;
+
+        INSERT INTO persona VALUES Lucas;
+        END;
+
+-Decalración e inserción(%ROWTYPE):
+    DECLARE
+        new_persona persona%ROWTYPE;
+        BEGIN
+        -- Asignación de valores al registro
+        new_persona.codigo := 008;
+        new_persona.nombre := 'Teresa';
+        new_persona.edad := 72;
+        -- Insertar los datos
+            INSERT INTO persona VALUES new_persona;
+            
+            DBMS_OUTPUT.PUT_LINE('Nueva persona insertado.'); 
+        END; 
