@@ -1,0 +1,20 @@
+ESTRUCTURA SENTENCIA BUCLE LOOP + EXCEPTION
+
+DECLARE
+    contador NUMBER := 1;
+    exception_prueba EXCEPTION;
+BEGIN 
+    LOOP
+        BEGIN
+            DBMS_OUTPUT.PUT_LINE(contador);
+            IF contador = 20 THEN
+                EXIT;
+            END IF;
+            
+            contador := contador + 1;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('Se ha producido un error en la variable');
+        END;
+    END LOOP;
+END;
