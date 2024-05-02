@@ -53,3 +53,23 @@ INSERCIÓN DE DATOS TIPO OBJETO:
             
             DBMS_OUTPUT.PUT_LINE('Nueva persona insertado.'); 
         END; 
+
+
+CREACION DE TABLA E INSERCION DE ELEMENTOS:
+
+DECLARE 
+-- Crear tipo de dato en la tabla
+TYPE numero IS TABLE OF NUMBER;
+-- Crear tabla e inicializar tabla con el tipo de dato
+tabla_numeros numero := numero();
+-- Variable para ver resultado la cosulta
+resultado NUMBER;
+
+BEGIN
+FOR n IN 1..20 LOOP
+    tabla_numeros.EXTEND;
+    tabla_numeros(n) := n;
+END LOOP;
+resultado := tabla_numeros.COUNT;
+DBMS_OUTPUT.PUT_LINE('Hay ' || resultado || ' nuemros en la tabla');
+END;
