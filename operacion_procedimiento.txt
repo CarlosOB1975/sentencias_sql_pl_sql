@@ -1,0 +1,22 @@
+    
+OPERACION DE SUMA EN PROCEDIMIENTO:
+
+CREATE OR REPLACE PROCEDURE suma_numeros(numero1 NUMBER, numero2 NUMBER) IS
+  resultado NUMBER;
+BEGIN
+  resultado := numero1 + numero2;
+  DBMS_OUTPUT.PUT_LINE('resulatdo ' || resultado);
+END suma_numeros;
+/
+
+DECLARE
+  numero1 NUMBER;
+  numero2 NUMBER;
+  resultado NUMBER;
+BEGIN 
+    numero1 := 5;
+    numero2 := 10;
+  -- Llamada al procedimiento
+    suma_numeros(numero1, numero2); -- Llamar al procedimiento aquí
+END;
+/
