@@ -73,3 +73,20 @@ END LOOP;
 resultado := tabla_numeros.COUNT;
 DBMS_OUTPUT.PUT_LINE('Hay ' || resultado || ' nuemros en la tabla');
 END;
+
+
+DECLARACIÓN DE UN CURSOR:
+DECLARE
+    CURSOR cursor_empleados IS
+        SELECT nombre
+        FROM empleados;
+    nombre_empleado empleados.nombre%TYPE; -- Declaración de la variable para almacenar el nombre del empleado
+BEGIN
+    OPEN cursor_empleados; -- Abrir el cursor
+
+    -- Recorrido de los registros del cursor
+    LOOP
+        FETCH cursor_empleados INTO nombre_empleado;
+        EXIT WHEN cursor_empleados%NOTFOUND; -- Salir del bucle cuando no hay más filas
+        DBMS_OUTPUT.PUT_LINE('Empleado: ' || nombre_empleado);
+    END LOOP;
